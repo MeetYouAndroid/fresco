@@ -16,4 +16,10 @@ public interface PainterCallBack {
    * 加载失败
    */
   void onFailure(String url,Throwable throwable);
+
+
+  /**
+   * 进度
+   */
+  void onProgress(String url,float progress);
 }

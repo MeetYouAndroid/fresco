@@ -96,7 +96,9 @@ class PainterUtils{
 
                 @Override
                 public void onProgressUpdate(DataSource<CloseableReference<CloseableImage>> dataSource) {
-
+                    if (callBack != null) {
+                        callBack.onProgress(url, dataSource.getProgress());
+                    }
                 }
             }, executor);
 //        }
