@@ -42,6 +42,11 @@ public class MeetyouTestActivity  extends Activity {
                       public void onFailure(String url, Throwable throwable) {
 
                       }
+
+                        @Override
+                        public void onProgress(String url, float progress) {
+
+                        }
                     });
 //                new Thread(new Runnable() {
 //                    @Override

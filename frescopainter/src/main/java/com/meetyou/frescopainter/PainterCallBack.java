@@ -21,5 +21,5 @@ public interface PainterCallBack {
   /**
    * 进度
    */
-  void onProgress(String url,float progress);
+  void onProgress(String url,int progress,int total);
 }
