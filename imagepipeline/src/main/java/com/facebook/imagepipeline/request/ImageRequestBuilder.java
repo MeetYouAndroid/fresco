@@ -37,13 +37,14 @@ public class ImageRequestBuilder {
   private ImageDecodeOptions mImageDecodeOptions = ImageDecodeOptions.defaults();
   private CacheChoice mCacheChoice = CacheChoice.DEFAULT;
   private boolean mProgressiveRenderingEnabled =
-      ImagePipelineConfig.getDefaultImageRequestConfig().isProgressiveRenderingEnabled();
+          ImagePipelineConfig.getDefaultImageRequestConfig().isProgressiveRenderingEnabled();
   private boolean mLocalThumbnailPreviewsEnabled = false;
   private Priority mRequestPriority = Priority.HIGH;
   private @Nullable Postprocessor mPostprocessor = null;
   private boolean mDiskCacheEnabled = true;
   private @Nullable RequestListener mRequestListener;
   private @Nullable MediaVariations mMediaVariations = null;
+  private boolean mIsOrigin = false;
 
   /**
    * Creates a new request builder instance. The setting will be done according to the source type.
@@ -81,17 +82,17 @@ public class ImageRequestBuilder {
    */
   public static ImageRequestBuilder fromRequest(ImageRequest imageRequest) {
     return ImageRequestBuilder.newBuilderWithSource(imageRequest.getSourceUri())
-        .setImageDecodeOptions(imageRequest.getImageDecodeOptions())
-        .setCacheChoice(imageRequest.getCacheChoice())
-        .setLocalThumbnailPreviewsEnabled(imageRequest.getLocalThumbnailPreviewsEnabled())
-        .setLowestPermittedRequestLevel(imageRequest.getLowestPermittedRequestLevel())
-        .setMediaVariations(imageRequest.getMediaVariations())
-        .setPostprocessor(imageRequest.getPostprocessor())
-        .setProgressiveRenderingEnabled(imageRequest.getProgressiveRenderingEnabled())
-        .setRequestPriority(imageRequest.getPriority())
-        .setResizeOptions(imageRequest.getResizeOptions())
-        .setRequestListener(imageRequest.getRequestListener())
-        .setRotationOptions(imageRequest.getRotationOptions());
+            .setImageDecodeOptions(imageRequest.getImageDecodeOptions())
+            .setCacheChoice(imageRequest.getCacheChoice())
+            .setLocalThumbnailPreviewsEnabled(imageRequest.getLocalThumbnailPreviewsEnabled())
+            .setLowestPermittedRequestLevel(imageRequest.getLowestPermittedRequestLevel())
+            .setMediaVariations(imageRequest.getMediaVariations())
+            .setPostprocessor(imageRequest.getPostprocessor())
+            .setProgressiveRenderingEnabled(imageRequest.getProgressiveRenderingEnabled())
+            .setRequestPriority(imageRequest.getPriority())
+            .setResizeOptions(imageRequest.getResizeOptions())
+            .setRequestListener(imageRequest.getRequestListener())
+            .setRotationOptions(imageRequest.getRotationOptions());
   }
 
   private ImageRequestBuilder() {
@@ -276,6 +277,15 @@ public class ImageRequestBuilder {
   /** Returns whether the use of the disk cache is enabled, which is partly dependent on the URI. */
   public boolean isDiskCacheEnabled() {
     return mDiskCacheEnabled && UriUtil.isNetworkUri(mSourceUri);
+  }
+
+  public boolean isOrigin() {
+    return mIsOrigin;
+  }
+
+  public ImageRequestBuilder setOrigin(boolean origin) {
+    mIsOrigin = origin;
+    return this;
   }
 
   /**

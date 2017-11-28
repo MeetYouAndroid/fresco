@@ -72,6 +72,10 @@ public class ImageRequest {
   /** Request listener to use for this image request */
   private final @Nullable RequestListener mRequestListener;
 
+
+  /** isOrigin */
+  private boolean mIsOrigin;
+
   public static ImageRequest fromFile(@Nullable File file) {
     return (file == null) ? null : ImageRequest.fromUri(UriUtil.getUriForFile(file));
   }
@@ -96,7 +100,7 @@ public class ImageRequest {
 
     mResizeOptions = builder.getResizeOptions();
     mRotationOptions = builder.getRotationOptions() == null
-        ? RotationOptions.autoRotate() : builder.getRotationOptions();
+            ? RotationOptions.autoRotate() : builder.getRotationOptions();
 
     mRequestPriority = builder.getRequestPriority();
     mLowestPermittedRequestLevel = builder.getLowestPermittedRequestLevel();
@@ -105,6 +109,8 @@ public class ImageRequest {
     mPostprocessor = builder.getPostprocessor();
 
     mRequestListener = builder.getRequestListener();
+
+    mIsOrigin = builder.isOrigin();
   }
 
   public CacheChoice getCacheChoice() {
@@ -189,9 +195,9 @@ public class ImageRequest {
     }
     ImageRequest request = (ImageRequest) o;
     return Objects.equal(mSourceUri, request.mSourceUri) &&
-        Objects.equal(mCacheChoice, request.mCacheChoice) &&
-        Objects.equal(mMediaVariations, request.mMediaVariations) &&
-        Objects.equal(mSourceFile, request.mSourceFile);
+            Objects.equal(mCacheChoice, request.mCacheChoice) &&
+            Objects.equal(mMediaVariations, request.mMediaVariations) &&
+            Objects.equal(mSourceFile, request.mSourceFile);
   }
 
   @Override
@@ -202,15 +208,19 @@ public class ImageRequest {
   @Override
   public String toString() {
     return Objects.toStringHelper(this)
-        .add("uri", mSourceUri)
-        .add("cacheChoice", mCacheChoice)
-        .add("decodeOptions", mImageDecodeOptions)
-        .add("postprocessor", mPostprocessor)
-        .add("priority", mRequestPriority)
-        .add("resizeOptions", mResizeOptions)
-        .add("rotationOptions", mRotationOptions)
-        .add("mediaVariations", mMediaVariations)
-        .toString();
+            .add("uri", mSourceUri)
+            .add("cacheChoice", mCacheChoice)
+            .add("decodeOptions", mImageDecodeOptions)
+            .add("postprocessor", mPostprocessor)
+            .add("priority", mRequestPriority)
+            .add("resizeOptions", mResizeOptions)
+            .add("rotationOptions", mRotationOptions)
+            .add("mediaVariations", mMediaVariations)
+            .toString();
+  }
+
+  public boolean isOrigin() {
+    return mIsOrigin;
   }
 
   /**
@@ -256,4 +266,5 @@ public class ImageRequest {
       return requestLevel1.getValue() > requestLevel2.getValue() ? requestLevel1 : requestLevel2;
     }
   }
+
 }

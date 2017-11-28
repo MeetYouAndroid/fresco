@@ -33,7 +33,7 @@ public class DownsampleUtil {
    * @return
    */
   public static int determineSampleSize(ImageRequest imageRequest, EncodedImage encodedImage) {
-    if (!EncodedImage.isMetaDataAvailable(encodedImage)) {
+    if (!EncodedImage.isMetaDataAvailable(encodedImage) || imageRequest.isOrigin()) {
       return DEFAULT_SAMPLE_SIZE;
     }
     float ratio = determineDownsampleRatio(imageRequest, encodedImage);
@@ -49,8 +49,8 @@ public class DownsampleUtil {
     int maxDimension = Math.max(encodedImage.getHeight(), encodedImage.getWidth());
     final ResizeOptions resizeOptions = imageRequest.getResizeOptions();
     final float maxBitmapSize = resizeOptions != null
-        ? resizeOptions.maxBitmapSize
-        : BitmapUtil.MAX_BITMAP_SIZE;
+            ? resizeOptions.maxBitmapSize
+            : BitmapUtil.MAX_BITMAP_SIZE;
     while (maxDimension / sampleSize > maxBitmapSize) {
       if (encodedImage.getImageFormat() == DefaultImageFormats.JPEG) {
         sampleSize *= 2;
@@ -63,11 +63,11 @@ public class DownsampleUtil {
 
   @VisibleForTesting
   static float determineDownsampleRatio(
-      ImageRequest imageRequest, EncodedImage encodedImage) {
+          ImageRequest imageRequest, EncodedImage encodedImage) {
     Preconditions.checkArgument(EncodedImage.isMetaDataAvailable(encodedImage));
     final ResizeOptions resizeOptions = imageRequest.getResizeOptions();
     if (resizeOptions == null || resizeOptions.height <= 0 || resizeOptions.width <= 0
-        || encodedImage.getWidth() == 0 || encodedImage.getHeight() == 0) {
+            || encodedImage.getWidth() == 0 || encodedImage.getHeight() == 0) {
       return 1.0f;
     }
 
@@ -82,17 +82,17 @@ public class DownsampleUtil {
     final float heightRatio = ((float) resizeOptions.height) / heightAfterRotation;
     float ratio = Math.max(widthRatio, heightRatio);
     FLog.v(
-        "DownsampleUtil",
-        "Downsample - Specified size: %dx%d, image size: %dx%d " +
-            "ratio: %.1f x %.1f, ratio: %.3f for %s",
-        resizeOptions.width,
-        resizeOptions.height,
-        widthAfterRotation,
-        heightAfterRotation,
-        widthRatio,
-        heightRatio,
-        ratio,
-        imageRequest.getSourceUri().toString());
+            "DownsampleUtil",
+            "Downsample - Specified size: %dx%d, image size: %dx%d " +
+                    "ratio: %.1f x %.1f, ratio: %.3f for %s",
+            resizeOptions.width,
+            resizeOptions.height,
+            widthAfterRotation,
+            heightAfterRotation,
+            widthRatio,
+            heightRatio,
+            ratio,
+            imageRequest.getSourceUri().toString());
     return ratio;
   }
 
@@ -134,7 +134,7 @@ public class DownsampleUtil {
     }
     int rotationAngle = encodedImage.getRotationAngle();
     Preconditions.checkArgument(rotationAngle == 0 || rotationAngle == 90
-        || rotationAngle == 180 || rotationAngle == 270);
+            || rotationAngle == 180 || rotationAngle == 270);
     return rotationAngle;
   }
 
