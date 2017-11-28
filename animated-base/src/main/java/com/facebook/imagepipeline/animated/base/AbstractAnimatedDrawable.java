@@ -23,7 +23,7 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 
 import com.facebook.common.internal.VisibleForTesting;
-import com.facebook.common.logging.//Flog;
+//import com.facebook.common.logging.Flog;
 import com.facebook.common.references.CloseableReference;
 import com.facebook.common.time.MonotonicClock;
 import com.facebook.drawable.base.DrawableWithCaches;
