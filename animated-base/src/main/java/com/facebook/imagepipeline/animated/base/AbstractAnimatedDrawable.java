@@ -23,7 +23,7 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 
 import com.facebook.common.internal.VisibleForTesting;
-import com.facebook.common.logging.FLog;
+import com.facebook.common.logging.//Flog;
 import com.facebook.common.references.CloseableReference;
 import com.facebook.common.time.MonotonicClock;
 import com.facebook.drawable.base.DrawableWithCaches;
@@ -108,7 +108,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
   private final Runnable mNextFrameTask = new Runnable() {
     @Override
     public void run() {
-      FLog.v(TAG, "(%s) Next Frame Task", mLogId);
+      //Flog.v(TAG, "(%s) Next Frame Task", mLogId);
       onNextFrame();
     }
   };
@@ -116,7 +116,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
   private final Runnable mInvalidateTask = new Runnable() {
     @Override
     public void run() {
-      FLog.v(TAG, "(%s) Invalidate Task", mLogId);
+      //Flog.v(TAG, "(%s) Invalidate Task", mLogId);
       mInvalidateTaskScheduled = false;
       doInvalidateSelf();
     }
@@ -125,7 +125,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
   private final Runnable mWatchdogTask = new Runnable() {
     @Override
     public void run() {
-      FLog.v(TAG, "(%s) Watchdog Task", mLogId);
+      //Flog.v(TAG, "(%s) Watchdog Task", mLogId);
       doWatchdogCheck();
     }
   };
@@ -291,7 +291,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
       int nextFrame = (mScheduledFrameNumber + 1) % mFrameCount;
       long nextFrameMs = nowMs + durationMs;
       if (mNextFrameTaskMs == -1 || mNextFrameTaskMs > nextFrameMs) {
-        FLog.v(TAG, "(%s) Next frame (%d) in %d ms", mLogId, nextFrame, durationMs);
+        //Flog.v(TAG, "(%s) Next frame (%d) in %d ms", mLogId, nextFrame, durationMs);
         unscheduleSelf(mNextFrameTask); // Cancel any existing task.
         scheduleSelf(mNextFrameTask, nextFrameMs);
         mNextFrameTaskMs = nextFrameMs;
@@ -344,12 +344,12 @@ public abstract class AbstractAnimatedDrawable extends Drawable
             renderFrame(canvas, mPendingRenderedFrameNumber, mPendingRenderedFrameMonotonicNumber);
         didDrawFrame |= rendered;
         if (rendered) {
-          FLog.v(TAG, "(%s) Rendered pending frame %d", mLogId, mPendingRenderedFrameNumber);
+          //Flog.v(TAG, "(%s) Rendered pending frame %d", mLogId, mPendingRenderedFrameNumber);
           mPendingRenderedFrameNumber = NO_FRAME;
           mPendingRenderedFrameMonotonicNumber = NO_FRAME;
         } else {
           // Try again later.
-          FLog.v(TAG, "(%s) Trying again later for pending %d", mLogId, mPendingRenderedFrameNumber);
+          //Flog.v(TAG, "(%s) Trying again later for pending %d", mLogId, mPendingRenderedFrameNumber);
           scheduleInvalidatePoll();
         }
       }
@@ -365,12 +365,12 @@ public abstract class AbstractAnimatedDrawable extends Drawable
             mScheduledFrameMonotonicNumber);
         didDrawFrame |= rendered;
         if (rendered) {
-          FLog.v(TAG, "(%s) Rendered current frame %d", mLogId, mScheduledFrameNumber);
+          //Flog.v(TAG, "(%s) Rendered current frame %d", mLogId, mScheduledFrameNumber);
           if (mIsRunning) {
             computeAndScheduleNextFrame(true /* schedule next frame */);
           }
         } else {
-          FLog.v(TAG, "(%s) Trying again later for current %d", mLogId, mScheduledFrameNumber);
+          //Flog.v(TAG, "(%s) Trying again later for current %d", mLogId, mScheduledFrameNumber);
           mPendingRenderedFrameNumber = mScheduledFrameNumber;
           mPendingRenderedFrameMonotonicNumber = mScheduledFrameMonotonicNumber;
           scheduleInvalidatePoll();
@@ -381,7 +381,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
         if (mLastDrawnFrame != null) {
           canvas.drawBitmap(mLastDrawnFrame.get(), 0f, 0f, mPaint);
           didDrawFrame = true;
-          FLog.v(TAG, "(%s) Rendered last known frame %d", mLogId, mLastDrawnFrameNumber);
+          //Flog.v(TAG, "(%s) Rendered last known frame %d", mLogId, mLastDrawnFrameNumber);
         }
       }
 
@@ -392,7 +392,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
         if (previewBitmapReference != null) {
           canvas.drawBitmap(previewBitmapReference.get(), 0f, 0f, mPaint);
           previewBitmapReference.close();
-          FLog.v(TAG, "(%s) Rendered preview frame", mLogId);
+          //Flog.v(TAG, "(%s) Rendered preview frame", mLogId);
           didDrawFrame = true;
         }
       }
@@ -400,7 +400,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
       if (!didDrawFrame) {
         // TODO(6169940) this may not be necessary. Confirm with Rich.
         canvas.drawRect(0, 0, mDstRect.width(), mDstRect.height(), mTransparentPaint);
-        FLog.v(TAG, "(%s) Failed to draw a frame", mLogId);
+        //Flog.v(TAG, "(%s) Failed to draw a frame", mLogId);
       }
 
       canvas.restore();
@@ -455,13 +455,13 @@ public abstract class AbstractAnimatedDrawable extends Drawable
         mAnimatedDrawableDiagnostics.incrementDrawnFrames(1);
         mAnimatedDrawableDiagnostics.incrementDroppedFrames(droppedFrames);
         if (droppedFrames > 0) {
-          FLog.v(TAG, "(%s) Dropped %d frames", mLogId, droppedFrames);
+          //Flog.v(TAG, "(%s) Dropped %d frames", mLogId, droppedFrames);
         }
       }
       mLastDrawnFrame = bitmapReference;
       mLastDrawnFrameNumber = frameNumber;
       mLastDrawnFrameMonotonicNumber = frameMonotonicNumber;
-      FLog.v(TAG, "(%s) Drew frame %d", mLogId, frameNumber);
+      //Flog.v(TAG, "(%s) Drew frame %d", mLogId, frameNumber);
       return true;
     }
     return false;
@@ -570,7 +570,7 @@ public abstract class AbstractAnimatedDrawable extends Drawable
 
   @Override
   public void dropCaches() {
-    FLog.v(TAG, "(%s) Dropping caches", mLogId);
+    //Flog.v(TAG, "(%s) Dropping caches", mLogId);
     if (mLastDrawnFrame != null) {
       mLastDrawnFrame.close();
       mLastDrawnFrame = null;
