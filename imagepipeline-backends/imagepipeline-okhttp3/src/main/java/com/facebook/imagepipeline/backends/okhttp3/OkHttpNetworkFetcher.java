@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;
 import okhttp3.CacheControl;
 import okhttp3.Call;
@@ -62,7 +63,7 @@ public class OkHttpNetworkFetcher extends
   private Executor mCancellationExecutor;
 
   //新增需求:如果文件404就不再请求
-  private List<String> m404Store = new ArrayList<String>();
+  private List<String> m404Store = new CopyOnWriteArrayList<>();
 
   /**
    * @param okHttpClient client to use
