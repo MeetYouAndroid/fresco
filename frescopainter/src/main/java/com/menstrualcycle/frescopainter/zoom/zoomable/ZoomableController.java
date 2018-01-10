@@ -10,7 +10,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.meetyou.frescopainter.zoom.zoomable;
+package com.menstrualcycle.frescopainter.zoom.zoomable;
 
 import android.graphics.Matrix;
 import android.graphics.RectF;

@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.meetyou.frescopainter.FrescoPainter;
-import com.meetyou.frescopainter.PainterCallBack;
+import com.menstrualcycle.frescopainter.FrescoPainter;
+import com.menstrualcycle.frescopainter.PainterCallBack;
 
 /**
  * Created by Linhh on 16/9/10.

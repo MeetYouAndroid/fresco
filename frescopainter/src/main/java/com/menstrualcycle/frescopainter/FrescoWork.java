@@ -1,9 +1,8 @@
-package com.meetyou.frescopainter;
+package com.menstrualcycle.frescopainter;
 
 import java.io.File;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 
 import com.facebook.imagepipeline.common.ResizeOptions;
 

@@ -10,7 +10,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.meetyou.frescopainter.zoom.gestures;
+package com.menstrualcycle.frescopainter.zoom.gestures;
 
 import android.view.MotionEvent;
 

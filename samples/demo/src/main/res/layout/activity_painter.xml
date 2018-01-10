@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeeeee">
-    <com.meetyou.frescopainter.FrescoImageView
+    <com.menstrualcycle.frescopainter.FrescoImageView
         android:id="@+id/frescoimage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

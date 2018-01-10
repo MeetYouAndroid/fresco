@@ -1,4 +1,4 @@
-package com.meetyou.frescopainter;
+package com.menstrualcycle.frescopainter;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.imagepipeline.request.ImageRequest;
-import com.meetyou.frescopainter.zoom.zoomable.ZoomableDraweeView;
+import com.menstrualcycle.frescopainter.zoom.zoomable.ZoomableDraweeView;
 
 /**
  * Created by Linhh on 16/9/10.

@@ -9,7 +9,7 @@
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.meetyou.frescopainter.zoom.zoomable;
+package com.menstrualcycle.frescopainter.zoom.zoomable;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;

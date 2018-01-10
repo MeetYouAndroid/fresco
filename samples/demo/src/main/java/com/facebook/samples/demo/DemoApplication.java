@@ -18,7 +18,7 @@ import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFact
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.listener.RequestListener;
 import com.facebook.imagepipeline.listener.RequestLoggingListener;
-import com.meetyou.frescopainter.FrescoPainter;
+import com.menstrualcycle.frescopainter.FrescoPainter;
 
 import java.util.HashSet;
 import java.util.Set;

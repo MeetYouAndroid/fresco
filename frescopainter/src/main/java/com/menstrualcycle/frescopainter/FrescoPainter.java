@@ -1,10 +1,8 @@
-package com.meetyou.frescopainter;
+package com.menstrualcycle.frescopainter;
 
 import java.io.File;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.DraweeConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;

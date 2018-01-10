@@ -1,4 +1,4 @@
-package com.meetyou.frescopainter;
+package com.menstrualcycle.frescopainter;
 
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.interfaces.FrescoPainterDraweeInterceptor;

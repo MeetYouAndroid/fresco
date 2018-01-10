@@ -1,4 +1,4 @@
-package com.meetyou.frescopainter;
+package com.menstrualcycle.frescopainter;
 
 import android.text.TextUtils;
 

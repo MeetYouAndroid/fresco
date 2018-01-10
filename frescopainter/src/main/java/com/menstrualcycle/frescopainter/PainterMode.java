@@ -1,4 +1,4 @@
-package com.meetyou.frescopainter;
+package com.menstrualcycle.frescopainter;
 
 /**
  * Created by Linhh on 16/9/20.

@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.facebook.drawee.drawable.ScalingUtils;
-import com.meetyou.frescopainter.FrescoImageView;
-import com.meetyou.frescopainter.FrescoPainter;
-import com.meetyou.frescopainter.FrescoPainterPen;
+import com.menstrualcycle.frescopainter.FrescoImageView;
+import com.menstrualcycle.frescopainter.FrescoPainter;
+import com.menstrualcycle.frescopainter.FrescoPainterPen;
 
 /**
  * Created by Linhh on 16/9/10.

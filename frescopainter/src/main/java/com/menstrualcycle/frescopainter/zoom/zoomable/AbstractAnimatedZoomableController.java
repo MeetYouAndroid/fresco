@@ -9,13 +9,13 @@
 // * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // */
-//package com.meetyou.frescopainter.zoom.zoomable;
+//package com.menstrualcycle.frescopainter.zoom.zoomable;
 //
 //import android.graphics.Matrix;
 //import android.graphics.PointF;
 //
 //import com.facebook.common.logging.FLog;
-//import com.meetyou.frescopainter.zoom.gestures.TransformGestureDetector;
+//import com.menstrualcycle.frescopainter.zoom.gestures.TransformGestureDetector;
 //
 ///**
 // * Abstract class for ZoomableController that adds animation capabilities to

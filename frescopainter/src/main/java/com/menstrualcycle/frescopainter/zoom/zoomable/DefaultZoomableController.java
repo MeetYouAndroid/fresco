@@ -10,7 +10,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.meetyou.frescopainter.zoom.zoomable;
+package com.menstrualcycle.frescopainter.zoom.zoomable;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
@@ -18,11 +18,7 @@ import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.facebook.common.logging.FLog;
-import com.meetyou.frescopainter.zoom.gestures.TransformGestureDetector;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import com.menstrualcycle.frescopainter.zoom.gestures.TransformGestureDetector;
 
 /**
  * Zoomable controller that calculates transformation based on touch events.
