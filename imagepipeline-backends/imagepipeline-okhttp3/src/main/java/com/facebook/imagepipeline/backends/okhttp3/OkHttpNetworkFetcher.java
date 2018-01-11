@@ -158,8 +158,7 @@ public class OkHttpNetworkFetcher extends
             public void onResponse(Call call, Response response) throws IOException {
               fetchState.responseTime = SystemClock.elapsedRealtime();
               int code = response.code();
-              if (code == HttpURLConnection.HTTP_NOT_FOUND
-                      && uri.toString().contains(".seeyouyima.com/avatar_")) {
+              if (code == HttpURLConnection.HTTP_NOT_FOUND) {
                 //404,添加到列表队列
                 m404Store.add(uri.toString());
               }
