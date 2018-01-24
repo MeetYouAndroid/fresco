@@ -39,6 +39,16 @@ public class FrescoPainterPen {
     private boolean mProgressiveRenderingEnabled = false;
     private boolean isOrigin=false;
     private int mLoadMode = PainterMode.FULL_LOAD;
+    private int mComeFrom;//0默认，1代表其他
+
+    public int getComeFrom() {
+        return mComeFrom;
+    }
+
+    public FrescoPainterPen setComeFrom(int comeFrom) {
+        mComeFrom = comeFrom;
+        return this;
+    }
 
     public FrescoPainterDraweeInterceptor getFrescoPainterDraweeInterceptor() {
         return mFrescoPainterDraweeInterceptor;

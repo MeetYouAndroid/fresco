@@ -299,32 +299,30 @@ public class WrappingUtils {
       applyRoundingParams(roundedColorDrawable, roundingParams);
       return roundedColorDrawable;
     }
-    if(roundingParams != null && (roundingParams.getOverlayColor() != 0 || roundingParams.getCornersRadii() != null || roundingParams.getRoundAsCircle())) {
+
+    if(roundingParams.getComeFrom()!=0 &&
+            roundingParams != null && (roundingParams.getOverlayColor() != 0 || roundingParams.getCornersRadii() != null || roundingParams.getRoundAsCircle())) {
+
       //新需求,将gif改为圆角显示
-      if (drawable instanceof AnimatedDrawable) {
-        final AnimatedDrawable bitmapDrawable = (AnimatedDrawable) drawable;
-        RoundedBitmapDrawable roundedBitmapDrawable =
-                new RoundedBitmapDrawable(
-                        resources,
-                        bitmapDrawable.getAnimatedDrawableBackend().getPreviewBitmap().get(),
-                        bitmapDrawable.getPaint());
-        applyRoundingParams(roundedBitmapDrawable, roundingParams);
-        return roundedBitmapDrawable;
-      }
-      if (drawable instanceof AnimatedDrawableSupport) {
-        final AnimatedDrawableSupport bitmapDrawable = (AnimatedDrawableSupport) drawable;
-        RoundedBitmapDrawable roundedBitmapDrawable =
-                new RoundedBitmapDrawable(
-                        resources,
-                        bitmapDrawable.getAnimatedDrawableBackend().getPreviewBitmap().get(),
-                        bitmapDrawable.getPaint());
-        applyRoundingParams(roundedBitmapDrawable, roundingParams);
-        return roundedBitmapDrawable;
+      if(mRoundDrawableInterceptor!=null){
+        RoundedBitmapDrawable roundedBitmapDrawable = mRoundDrawableInterceptor.intercept(resources,drawable);
+        if(roundedBitmapDrawable!=null){
+          return roundedBitmapDrawable;
+        }
       }
     }
+
+
     return drawable;
   }
 
+  public static interface RoundDrawableInterceptor{
+    public RoundedBitmapDrawable intercept(Resources resources,Drawable drawable);
+  }
+  private static RoundDrawableInterceptor mRoundDrawableInterceptor;
+  public static void setRoundDrawableInterceptor(RoundDrawableInterceptor interceptor){
+    mRoundDrawableInterceptor = interceptor;
+  }
   /**
    * Applies the given rounding params on the specified rounded drawable.
    */
