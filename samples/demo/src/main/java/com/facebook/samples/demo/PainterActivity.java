@@ -85,7 +85,8 @@ public class PainterActivity extends Activity {
 //            });
 
         FrescoPainterPen pen = FrescoPainterPen.
-                newBuilderWithURL("http://cdn.seeyouyima.com/taobao/web_brand_area_notice58febef3cf4f5_500_500.png")
+                newBuilderWithURL("http://sc.seeyouyima.com/assess/20180126/5a6a8877a98f8_768_432.gif?imageView2/1/w/750/h/500/format/webp")
+                .setAnim(true)
             .setScaleType(ScalingUtils.ScaleType.CENTER)
                 ;
 //        FrescoPainterPen pen = FrescoPainterPen.

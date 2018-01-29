@@ -29,25 +29,7 @@ public class MeetyouTestActivity  extends Activity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              FrescoPainter.workspace().loadImageCallBackUi(
-                    "http://sc.seeyouyima.com/advertise/20160726/5796d7899b2fa_147_196.gif",
-                    new PainterCallBack() {
-                      @Override
-                      public void onSuccess(String url, Bitmap bitmap) {
-                        ((ImageView)findViewById(R.id.ivtest)).setImageBitmap(bitmap);
 
-                      }
-
-                      @Override
-                      public void onFailure(String url, Throwable throwable) {
-
-                      }
-
-                        @Override
-                        public void onProgress(String url, float progress) {
-
-                        }
-                    });
 //                new Thread(new Runnable() {
 //                    @Override
 //                    public void run() {

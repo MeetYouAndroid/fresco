@@ -38,6 +38,9 @@ public class MainActivity extends Activity {
             Uri.parse("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3975589162,1369053045&fm=116&gp=0.jpg"))
             .setProgressiveRenderingEnabled(true)
             .build();
+    findViewAndLoadAnimatedImageUri(
+            R.id.animated_gif,
+            "http://sc.seeyouyima.com/assess/20180126/5a6a8877a98f8_768_432.gif?imageView2/1/w/750/h/500/format/webp");
 
     findViewById(R.id.baseline_jpeg).setOnClickListener(new View.OnClickListener() {
       @Override
